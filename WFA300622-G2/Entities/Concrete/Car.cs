@@ -9,15 +9,13 @@ namespace WFA300622_G2.Entities.Concrete
 {
     public class Car : BaseEntity
     {
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public decimal Price { get; set; }
+        public string Marka { get; set; }       
+        public double Price { get; set; }
 
-        public Car(int id, string marka, string model, decimal price)
+        public Car(int id, string marka, double price)
         {
             ID = id;
-            Marka = marka;
-            Model = model;
+            Marka = marka;            
             Price = price;
         }
 

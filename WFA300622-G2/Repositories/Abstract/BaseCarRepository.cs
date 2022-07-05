@@ -11,14 +11,14 @@ namespace WFA300622_G2.Repositories.Abstract
     public abstract class BaseCarRepository
     {
 
-        // CRUD İŞLMELERİNİ YAPACAĞIZ..   CRUD ==> CREATE, UPDATE, DELETE
+        // CRUD İŞLMELERİNİ YAPACAĞIZ..   CRUD ==> CREATE, UPDATE, DELETE, SELECT
 
         public abstract List<Car> GetCars();
-        public abstract void CreateCar(string model, string marka, decimal price);
-        public abstract void UpdateCar(int id, string model, decimal price);
+        public abstract void CreateCar(int id, string marka, double price);
+        public abstract void UpdateCar(int id,  string marka, double price);
         public abstract void DeleteCar(int id);
-        public abstract void Find(int id, TextBox txtModel, TextBox txtMarka, TextBox txtPrice);
-        public abstract void ClearTextBox(TextBox txtModel, TextBox txtMarka, TextBox txtPrice);
+        public abstract void Find(int id, TextBox txtMarka, TextBox txtPrice); // ?
+        public abstract void ClearTextBox(TextBox txtID ,TextBox txtMarka, TextBox txtPrice);
 
     }
 }

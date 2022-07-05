@@ -11,34 +11,67 @@ namespace WFA300622_G2.Repositories.Concrete
 {
     public class CarRepositories : BaseCarRepository
     {
-        public override void ClearTextBox(TextBox txtModel, TextBox txtMarka, TextBox txtPrice)
+
+        public override void ClearTextBox(TextBox txtID, TextBox txtMarka, TextBox txtPrice)
         {
-            throw new NotImplementedException();
+            txtMarka.Text = String.Empty;
+            txtPrice.Text = String.Empty;
+            txtID.Text = String.Empty;
+
         }
 
-        public override void CreateCar(string model, string marka, decimal price)
+        public override void CreateCar(int id, string marka, double price)
         {
-            throw new NotImplementedException();
+            Car c1 = new Car(id, marka, price);
+            SeedData.CarList.Add(c1);
         }
 
         public override void DeleteCar(int id)
         {
-            throw new NotImplementedException();
+            foreach (Car item in SeedData.CarList)
+            {
+                if (item.ID == id)
+                {
+                    SeedData.CarList.Remove(item);
+                }
+                else
+                {
+                    MessageBox.Show("Value Not Found!");
+                }
+            }
         }
 
-        public override void Find(int id, TextBox txtModel, TextBox txtMarka, TextBox txtPrice)
+        public override void Find(int id, TextBox txtMarka, TextBox txtPrice)  //?
         {
-            throw new NotImplementedException();
+            foreach (Car item in SeedData.CarList)
+            {
+                if (item.ID == id)
+                {
+                    txtMarka.Text = item.Marka;
+                    txtPrice.Text = item.Price.ToString();
+                }
+            }
         }
 
         public override List<Car> GetCars()
         {
-            throw new NotImplementedException();
+            return SeedData.CarList.ToList();
         }
 
-        public override void UpdateCar(int id, string model, decimal price)
+        public override void UpdateCar(int id, string marka, double price)
         {
-            throw new NotImplementedException();
+            Car car = new Car(5, marka, price);
+
+            foreach (Car item in SeedData.CarList)
+            {
+                if (item.ID == id)
+                {
+
+                    item.Marka = marka;
+                    item.Price = price;
+                }
+            }
+
         }
     }
 }
